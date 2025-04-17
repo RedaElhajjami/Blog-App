@@ -16,8 +16,9 @@ const AuthForm = () => {
       const res = await api.post(endpoint, { email, password, fullname });
       if (isLogin) {
         const token = res.data.token;
-        localStorage.setItem("token", token); // Save token to localStorage
+        localStorage.setItem("token", token); 
         navigate("/");
+        window.location.reload();
       } else {
         alert("Inscription réussie, connectez-vous");
         setIsLogin(true);

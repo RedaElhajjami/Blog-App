@@ -21,8 +21,13 @@ mongoose
 // Ajouter les routes
 const postRoutes = require("./routes/post");
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
+const path = require('path');
+
 app.use("/api/posts", postRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api', profileRoutes);
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
